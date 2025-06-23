@@ -1,0 +1,50 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "解决方案项", "解决方案项", "{9FA3D6BD-1EC1-3BA5-80CB-CE02773A58D5}"
+	ProjectSection(SolutionItems) = preProject
+		Directory.Build.props = Directory.Build.props
+		Directory.Build.targets = Directory.Build.targets
+		Directory.Packages.props = Directory.Packages.props
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TQ.EntityFramework.AutoMigration", "TQ.EntityFramework.AutoMigration\TQ.EntityFramework.AutoMigration.csproj", "{1A624AC2-D348-48CC-8979-707DDB00EBA2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TQ_EntityFramework.UnitofWork", "TQ_EntityFramework.UnitofWork\TQ_EntityFramework.UnitofWork.csproj", "{811E02F4-25D0-45D4-9D8C-55E593F03C7B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TQ.Utilities", "TQ.Utilities\TQ.Utilities.csproj", "{FF13DCFD-0523-4673-B952-571CC1536BE9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TQ.PackageBuilder", "TQ.PackageBuilder\TQ.PackageBuilder.csproj", "{6A453F60-B499-41AD-A5BB-5F771CAAA331}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1A624AC2-D348-48CC-8979-707DDB00EBA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A624AC2-D348-48CC-8979-707DDB00EBA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A624AC2-D348-48CC-8979-707DDB00EBA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A624AC2-D348-48CC-8979-707DDB00EBA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{811E02F4-25D0-45D4-9D8C-55E593F03C7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{811E02F4-25D0-45D4-9D8C-55E593F03C7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{811E02F4-25D0-45D4-9D8C-55E593F03C7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{811E02F4-25D0-45D4-9D8C-55E593F03C7B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF13DCFD-0523-4673-B952-571CC1536BE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF13DCFD-0523-4673-B952-571CC1536BE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF13DCFD-0523-4673-B952-571CC1536BE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF13DCFD-0523-4673-B952-571CC1536BE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A453F60-B499-41AD-A5BB-5F771CAAA331}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A453F60-B499-41AD-A5BB-5F771CAAA331}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A453F60-B499-41AD-A5BB-5F771CAAA331}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A453F60-B499-41AD-A5BB-5F771CAAA331}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F8436213-A665-496F-A54A-4BF602B9FC2B}
+	EndGlobalSection
+EndGlobal
