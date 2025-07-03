@@ -26,8 +26,7 @@ namespace TQ_EntityFramework.UnitofWork.UnitofWork
 
         public IQueryable<T> AsNoTracking()
         {
-            DbSet.AsNoTracking();
-            return DbSet;
+            return DbSet.AsNoTracking(); 
         }
 
         public async Task<int> CountAsync(Expression<Func<T, bool>> predicate = null)
@@ -48,7 +47,6 @@ namespace TQ_EntityFramework.UnitofWork.UnitofWork
             }
 
             DbSet.Remove(entity);
-            await _dbContext.SaveChangesAsync();
         }
 
         public async Task DeleteAsync(Expression<Func<T, bool>> predicate)
@@ -57,14 +55,12 @@ namespace TQ_EntityFramework.UnitofWork.UnitofWork
             if (entities.Any())
             {
                 DbSet.RemoveRange(entities);
-                await _dbContext.SaveChangesAsync();
             }
         }
 
         public async Task DeleteRangeAsync(IEnumerable<T> entities)
         {
             DbSet.RemoveRange(entities);
-            await _dbContext.SaveChangesAsync();
         }
 
         public async Task<bool> ExistsAsync(Expression<Func<T, bool>> predicate)
@@ -117,12 +113,47 @@ namespace TQ_EntityFramework.UnitofWork.UnitofWork
 
             return (items, totalCount);
         }
+        public async Task<(IEnumerable<TResult> Items, int TotalCount)> GetPagedAsync<TResult>(
+        int pageIndex,
+        int pageSize,
+        Expression<Func<T, bool>> predicate = null,
+        Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
+        Expression<Func<T, TResult>> selector = null)
+        {
+            var query = DbSet.AsQueryable();
+
+            if (predicate != null)
+            {
+                query = query.Where(predicate);
+            }
+
+            var totalCount = await query.CountAsync();
+
+            if (orderBy != null)
+            {
+                query = orderBy(query);
+            }
+
+            query = query
+                .Skip(Math.Max(0, pageIndex - 1) * Math.Max(1, pageSize))
+                .Take(Math.Max(1, pageSize));
+
+            if (selector != null)
+            {
+                var projected = query.Select(selector);
+                return (await projected.ToListAsync(), totalCount);
+            }
+            else
+            {
+                var defaultProjected = query.Cast<T>().Select(e => (TResult)(object)e);
+                return (await defaultProjected.ToListAsync(), totalCount);
+            }
+        }
 
         public async Task UpdateAsync(T entity)
         {
             DbSet.Attach(entity);
             _dbContext.Entry(entity).State = EntityState.Modified;
-            await _dbContext.SaveChangesAsync();
         }
 
         public async Task UpdateRangeAsync(IEnumerable<T> entities)
@@ -132,8 +163,8 @@ namespace TQ_EntityFramework.UnitofWork.UnitofWork
                 DbSet.Attach(entity);
                 _dbContext.Entry(entity).State = EntityState.Modified;
             }
-            await _dbContext.SaveChangesAsync();
         }
+
 
         public IQueryable<T> Where(Expression<Func<T, bool>> predicate)
         {

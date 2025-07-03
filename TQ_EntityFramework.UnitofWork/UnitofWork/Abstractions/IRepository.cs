@@ -36,7 +36,12 @@ namespace TQ_EntityFramework.UnitofWork.UnitofWork.Abstractions
             Expression<Func<T, bool>> predicate = null,
             Expression<Func<T, object>> orderBy = null,
             bool ascending = true);
-
+        Task<(IEnumerable<TResult> Items, int TotalCount)> GetPagedAsync<TResult>(
+        int pageIndex,
+        int pageSize,
+        Expression<Func<T, bool>> predicate = null,
+        Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
+        Expression<Func<T, TResult>> selector = null);
         /// <summary>
         /// 异步添加实体
         /// </summary>
